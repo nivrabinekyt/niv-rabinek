@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
   Activity, 
-  Calendar, 
   Search, 
   Settings, 
   LayoutDashboard, 
@@ -11,13 +10,10 @@ import {
   Zap,
   Camera,
   CheckCircle2,
-  AlertCircle,
   Flame,
   Dumbbell,
   Timer,
-  Info,
   Watch,
-  CloudDownload,
   ArrowRightLeft,
   User,
   Lock,
@@ -28,10 +24,10 @@ import {
   Share
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { Meal, DailyProgress, MealType } from './types.ts';
-import { generateDailyMealPlan, analyzeProductForCutting, fetchReplacementMeal } from './services/geminiService.ts';
-import MacroDisplay from './components/MacroDisplay.tsx';
-import MealItem from './components/MealItem.tsx';
+import { Meal, DailyProgress, MealType } from './types';
+import { generateDailyMealPlan, analyzeProductForCutting, fetchReplacementMeal } from './services/geminiService';
+import MacroDisplay from './components/MacroDisplay';
+import MealItem from './components/MealItem';
 
 interface UserProfile {
   name: string;
@@ -557,7 +553,7 @@ const App: React.FC = () => {
                   <LogOut className="w-5 h-5" />
                   התנתק מהמערכת
                 </button>
-                <p className="text-center text-slate-500 text-sm">NiVmAgNiV v1.2.7 - Netlify Fix Applied</p>
+                <p className="text-center text-slate-500 text-sm">NiVmAgNiV v1.2.8 - Standard Vite Build</p>
               </div>
             </div>
           </section>

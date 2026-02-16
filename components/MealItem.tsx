@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Meal } from '../types.ts';
+import { Meal } from '../types';
 import { Flame, Droplets, Zap, Dumbbell, Loader2 } from 'lucide-react';
 
 interface MealItemProps {
