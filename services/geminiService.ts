@@ -2,7 +2,8 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { MealType } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Vite מחליף את process.env בזמן ה-Build לפי ההגדרות ב-vite.config.ts
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
 
 export const generateDailyMealPlan = async (userGoals: string = "חיטוב", weight: number = 90) => {
   const prompt = `צור רשימה של 20 אפשרויות למנות "פיטנס נגיש" עבור משתמש השוקל ${weight} קילו ונמצא בשלב ${userGoals}. 
