@@ -1,9 +1,16 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { MealType } from "../types";
 
-// הגנה: אם המפתח חסר, האפליקציה לא תקרוס מיד אלא תנסה לעבוד (הקריאות ל-API ייכשלו ספציפית)
-const apiKey = process.env.API_KEY || "";
+// הגנה: גישה בטוחה למשתנה הסביבה
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || "";
+  } catch (e) {
+    return "";
+  }
+};
+
+const apiKey = getApiKey();
 const ai = new GoogleGenAI({ apiKey });
 
 export const generateDailyMealPlan = async (userGoals: string = "חיטוב", weight: number = 90) => {
