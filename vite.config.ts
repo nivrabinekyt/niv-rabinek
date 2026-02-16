@@ -15,7 +15,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'terser',
+    // הוסר המינימייזר 'terser' כדי להשתמש ב-esbuild המובנה
     rollupOptions: {
       output: {
         manualChunks: {
