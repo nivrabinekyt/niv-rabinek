@@ -28,10 +28,10 @@ import {
   Share
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { Meal, DailyProgress, MealType } from './types';
-import { generateDailyMealPlan, analyzeProductForCutting, fetchReplacementMeal } from './services/geminiService';
-import MacroDisplay from './components/MacroDisplay';
-import MealItem from './components/MealItem';
+import { Meal, DailyProgress, MealType } from './types.ts';
+import { generateDailyMealPlan, analyzeProductForCutting, fetchReplacementMeal } from './services/geminiService.ts';
+import MacroDisplay from './components/MacroDisplay.tsx';
+import MealItem from './components/MealItem.tsx';
 
 interface UserProfile {
   name: string;
@@ -514,7 +514,6 @@ const App: React.FC = () => {
           <section className="max-w-2xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-6">
             <h2 className="text-3xl font-black text-white">הגדרות חשבון</h2>
             
-            {/* Install App Section */}
             <div className="glass p-8 rounded-[40px] border border-emerald-500/30 bg-emerald-500/5 relative overflow-hidden">
               <div className="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 blur-[80px] rounded-full" />
               <div className="flex flex-col md:flex-row gap-6 items-center relative z-10">
