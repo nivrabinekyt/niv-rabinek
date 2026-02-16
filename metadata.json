@@ -1,6 +1,6 @@
 {
   "name": "NiVmAgNiV - Cyber-Athletic Nutrition",
-  "description": "High-performance meal tracking and planning application, personalized by weight and user profile with a Cyber-Athletic aesthetic.",
+  "description": "High-performance nutrition web app for athletes and fitness enthusiasts.",
   "requestFramePermissions": [
     "camera"
   ]

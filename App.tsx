@@ -19,9 +19,7 @@ import {
   Lock,
   LogOut,
   Weight,
-  Smartphone,
-  Download,
-  Share
+  Globe
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Meal, DailyProgress, MealType } from './types';
@@ -510,24 +508,19 @@ const App: React.FC = () => {
           <section className="max-w-2xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-6">
             <h2 className="text-3xl font-black text-white">הגדרות חשבון</h2>
             
-            <div className="glass p-8 rounded-[40px] border border-emerald-500/30 bg-emerald-500/5 relative overflow-hidden">
-              <div className="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 blur-[80px] rounded-full" />
+            <div className="glass p-8 rounded-[40px] border border-blue-500/30 bg-blue-500/5 relative overflow-hidden">
+              <div className="absolute -left-10 -top-10 w-40 h-40 bg-blue-500/10 blur-[80px] rounded-full" />
               <div className="flex flex-col md:flex-row gap-6 items-center relative z-10">
-                <div className="w-20 h-20 bg-emerald-500/20 rounded-3xl flex items-center justify-center border border-emerald-500/30 shadow-lg">
-                  <Smartphone className="w-10 h-10 text-emerald-400" />
+                <div className="w-20 h-20 bg-blue-500/20 rounded-3xl flex items-center justify-center border border-blue-500/30 shadow-lg">
+                  <Globe className="w-10 h-10 text-blue-400" />
                 </div>
                 <div className="flex-1 text-center md:text-right">
-                  <h3 className="text-xl font-black text-white mb-2">הורד את האפליקציה לטלפון</h3>
+                  <h3 className="text-xl font-black text-white mb-2">גרסת האתר הרשמית</h3>
                   <p className="text-slate-400 text-sm font-medium leading-relaxed">
-                    קבל גישה מהירה מכל מקום ללא צורך בדפדפן. <br/>
-                    <span className="text-emerald-400 font-bold">אנדרואיד:</span> לחץ על שלוש הנקודות ובחר "התקן אפליקציה". <br/>
-                    <span className="text-emerald-400 font-bold">אייפון:</span> לחץ על <Share className="inline w-4 h-4 mb-1"/> ובחר "הוסף למסך הבית".
+                    NiVmAgNiV פועל כאתר אינטרנט מתקדם (Web App). <br/>
+                    תוכל לגשת אליו מכל דפדפן במחשב או בטלפון ללא צורך בהתקנה.
                   </p>
                 </div>
-                <button className="bg-emerald-500 text-slate-950 px-6 py-3 rounded-2xl font-black flex items-center gap-2 hover:scale-105 transition-all shadow-lg shadow-emerald-500/20">
-                  <Download className="w-5 h-5" />
-                  התקן כעת
-                </button>
               </div>
             </div>
 
@@ -553,7 +546,7 @@ const App: React.FC = () => {
                   <LogOut className="w-5 h-5" />
                   התנתק מהמערכת
                 </button>
-                <p className="text-center text-slate-500 text-sm">NiVmAgNiV v1.2.8 - Standard Vite Build</p>
+                <p className="text-center text-slate-500 text-sm">NiVmAgNiV v1.3.0 - Web Only Edition</p>
               </div>
             </div>
           </section>
