@@ -13,6 +13,14 @@ const getApiKey = () => {
 const apiKey = getApiKey();
 const ai = new GoogleGenAI({ apiKey });
 
+// פונקציית עזר לייצור URL של תמונה מהירה
+const getFastImageUrl = (prompt: string) => {
+  const seed = Math.floor(Math.random() * 10000);
+  // הקטנת הרזולוציה ל-512x512 הופכת את הטעינה להרבה יותר מהירה
+  const basePrompt = encodeURIComponent(`Professional food photography, ${prompt}, high quality, appetizing`);
+  return `https://image.pollinations.ai/prompt/${basePrompt}?width=512&height=512&nologo=true&seed=${seed}&model=flux`;
+};
+
 export const generateDailyMealPlan = async (userGoals: string = "חיטוב", weight: number = 90) => {
   if (!apiKey) {
     console.error("Gemini API Key is missing!");
@@ -21,7 +29,7 @@ export const generateDailyMealPlan = async (userGoals: string = "חיטוב", we
 
   const prompt = `צור רשימה של 20 אפשרויות למנות "פיטנס נגיש" עבור משתמש השוקל ${weight} קילו ונמצא בשלב ${userGoals}. 
   הדגש הוא על מנות פשוטות מאוד להכנה, עשירות בחלבון ודלות קלוריות בהתאם למשקל של ${weight} ק"ג.
-  עבור כל מנה, צור גם שדה בשם 'imagePrompt' באנגלית שמתאר את המנה בצורה הכי מפתה וריאליסטית לצילום אוכל מקצועי.
+  עבור כל מנה, צור גם שדה בשם 'imagePrompt' באנגלית קצר וקולע (מקסימום 5 מילים) שמתאר את המנה.
   החזר: 5 אפשרויות לבוקר, 5 לצהריים, 5 לערב ו-5 נשנושים.
   החזר את התשובה בפורמט JSON בלבד.`;
 
@@ -55,7 +63,7 @@ export const generateDailyMealPlan = async (userGoals: string = "חיטוב", we
     const data = JSON.parse(response.text || "[]");
     return data.map((meal: any) => ({
       ...meal,
-      imageUrl: `https://image.pollinations.ai/prompt/${encodeURIComponent("Professional food photography of " + meal.imagePrompt + ", ultra-realistic, highly detailed, cinematic lighting, gourmet plating, 8k, mouth-watering") || 'healthy-meal'}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 10000)}`
+      imageUrl: getFastImageUrl(meal.imagePrompt)
     }));
   } catch (error) {
     console.error("Failed to fetch or parse AI response", error);
@@ -67,7 +75,7 @@ export const fetchReplacementMeal = async (mealType: MealType, userGoals: string
   if (!apiKey) return null;
 
   const prompt = `הצע מנה אחת פשוטה מאוד להכנה מסוג ${mealType} עבור אדם ב${userGoals} ששוקל ${weight} קילו. 
-  צור גם שדה 'imagePrompt' באנגלית לתיאור ויזואלי מגרה.
+  צור גם שדה 'imagePrompt' באנגלית קצר לתיאור ויזואלי.
   החזר JSON אובייקט בודד בלבד.`;
 
   try {
@@ -97,7 +105,7 @@ export const fetchReplacementMeal = async (mealType: MealType, userGoals: string
     const meal = JSON.parse(response.text || "{}");
     return {
       ...meal,
-      imageUrl: `https://image.pollinations.ai/prompt/${encodeURIComponent("Professional food photography of " + meal.imagePrompt + ", ultra-realistic, highly detailed, cinematic lighting, gourmet plating, 8k, mouth-watering") || 'healthy-meal'}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 10000)}`
+      imageUrl: getFastImageUrl(meal.imagePrompt)
     };
   } catch (error) {
     console.error("Failed to parse replacement meal", error);
