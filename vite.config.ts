@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    'process.env': process.env
+    // הגדרה מפורשת של משתנה הסביבה כדי למנוע שגיאות "process is not defined"
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || "")
   },
   server: {
     port: 3000,
@@ -15,7 +16,6 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    // הוסר המינימייזר 'terser' כדי להשתמש ב-esbuild המובנה
     rollupOptions: {
       output: {
         manualChunks: {
